@@ -1,0 +1,170 @@
+
+class newnode():
+    head=0
+    last=0
+    l=0
+    
+    
+    
+    def __init__(self,value):
+        self.next=None
+        self.value=value
+        self.prev=None
+
+    def start(self):
+    
+        newnode.head=self
+        newnode.last=self
+        
+        
+ 
+    
+    
+    
+    def linked(self,self1):
+        self.next=self1
+        self1.prev=self
+        newnode.last=self1
+        newnode.last.next=None
+        
+    def delete(self):
+        if(self.next is None and self.prev is None):
+            newnode.head=0
+            newnode.last=0
+            print("no value is in linkedlist");
+        else:
+        
+            if(self.next==None):
+             newnode.last=self.prev
+             self.prev=None
+             newnode.last.next=None
+             
+            elif(self.prev==None):
+             newnode.head=self.next
+             newnode.head.prev=None
+             
+            else:
+             self.prev.next=self.next
+             self.next.prev=self.prev
+             
+        
+
+    def traversal():
+      if(newnode.head==0 and newnode.last==0):
+        print("no value is ");
+      else:
+        t=newnode.head
+        while(True):
+            print(t.value,end="");
+            if(t.next==None):
+                break;
+            t=t.next
+
+    def undo():
+        
+        
+        x=newnode.last
+        if(x is not 0):
+        
+            newnode.delete(newnode.last);
+        
+            newnode.re(x)
+        
+        
+        
+        
+        
+    def redo():
+        c=0
+        if(newnode.last==0 and newnode.head==0 and newnode.l is not 0):
+                      newnode.start(newnode.l);
+                      newnode.l=newnode.l.prev
+        else:
+            
+             if(newnode.l is not 0):
+                c=newnode.l.prev
+                
+               
+                newnode.linked(newnode.last,newnode.l);
+                if(c==None):
+                    newnode.l=0
+                else:
+                    newnode.l=c
+        
+        
+                
+                
+                
+                
+            
+            
+                  
+
+           
+    def re(self):
+        
+        if(newnode.l==0):
+             newnode.l=self
+             newnode.l.prev==None
+        else:
+            newnode.l.next=self
+            self.prev=newnode.l
+            newnode.l=self
+
+
+while(True):
+ t=0
+ v=input("start your writting")
+ j=0
+ n=newnode(v[j]);
+ n.start()
+ if len(v)>1:
+   for j in range(1,len(v)):
+                if(j%2 is not 0):
+                    m=newnode(v[j]);
+                    n.linked(m);
+                else:
+                    n=newnode(v[j]);
+                    m.linked(n);
+
+ while(True):
+     print(" ")
+     want=input("what you want");
+     if(want=='redo'):
+         t-=1
+         
+         newnode.redo()
+     if(want=='undo'):
+         t+=1
+         newnode.undo();
+     if(want=="traversal"):
+         newnode.traversal();
+     if(want=="type"):
+         if t is not 0:
+             newnode.l=0
+         
+         v=input("enter the text");
+         if j%2==0:
+             m=newnode(v[0])
+             n.linked(m);
+             for j in range(1,len(v)):
+                if(j%2 is 0):
+                    m=newnode(v[j]);
+                    n.linked(m);
+                else:
+                    n=newnode(v[j]);
+                    m.linked(n);
+         
+         else:
+             n=newnode(v[0]);
+             m.linked(n);
+             for j in range(1,len(v)):
+                if(j%2 is not 0):
+                    m=newnode(v[j]);
+                    n.linked(m);
+             else:
+                    n=newnode(v[j]);
+                    m.linked(n);
+
+     if(want=='retype'):
+            break;

@@ -1,4 +1,5 @@
 
+
 class newnode():
     head=0
     last=0
@@ -113,7 +114,7 @@ class newnode():
 
 
 while(True):
- t=0
+ point=0
  v=input("start your writting")
  j=0
  n=newnode(v[j]);
@@ -131,16 +132,16 @@ while(True):
      print(" ")
      want=input("what you want");
      if(want=='redo'):
-         t-=1
+         point-=1
          
          newnode.redo()
      if(want=='undo'):
-         t+=1
+         point+=1
          newnode.undo();
      if(want=="traversal"):
          newnode.traversal();
      if(want=="type"):
-         if t is not 0:
+         if point is not 0:
              newnode.l=0
          
          v=input("enter the text");
@@ -162,9 +163,11 @@ while(True):
                 if(j%2 is not 0):
                     m=newnode(v[j]);
                     n.linked(m);
-             else:
+                else:
                     n=newnode(v[j]);
                     m.linked(n);
 
      if(want=='retype'):
             break;
+
+
